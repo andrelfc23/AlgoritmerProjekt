@@ -234,12 +234,12 @@ public class GUI<T> extends JFrame {
 		private List<Point> carPath = new ArrayList<>();
 		private int carIndex = 0;
 		private Image carImage;
-		private List<UpdatedPosition<T>> updatedPoints = new ArrayList<>(); // stores the new GPS positions to be drawn
-		private UpdatedPosition<T> maxMismatchPoint = null; // stores the updated positions
-		private ServerHall<T> maxMismatchOriginal = null; // stores original positions
+		private List<UpdatedPosition<T>> updatedPoints = new ArrayList<>(); 
+		private UpdatedPosition<T> maxMismatchPoint = null; 
+		private ServerHall<T> maxMismatchOriginal = null; 
 		private boolean showUpdatedPoints = false;
 		private UpdatedPosition<T> hoveredUpdated = null;
-		private final double MOVEMENT_THRESHOLD = 10.0; // meters
+		private final double MOVEMENT_THRESHOLD = 10.0; 
 
 		public GraphPanel(Graph<T> graph) {
 			this.graph = graph;
@@ -451,13 +451,13 @@ public class GUI<T> extends JFrame {
 				g2.setStroke(new BasicStroke(1));
 			}
 
-			// Draw car icon
+			
 			if (carPath != null && carIndex < carPath.size() && carImage != null) {
 				Point p = carPath.get(carIndex);
 				g2.drawImage(carImage, p.x - 10, p.y - 10, 20, 20, this);
 			}
 
-			// Draw nodes
+			
 			for (ServerHall<T> v : graph.getAllServerHalls()) {
 				int x = (int) v.getX();
 				int y = (int) v.getY();
@@ -501,11 +501,11 @@ public class GUI<T> extends JFrame {
 							g2.drawOval(x - RADIUS, y - RADIUS, RADIUS * 2, RADIUS * 2);
 						}
 
-						g2.setColor(new Color(255, 100, 100)); // reset color
+						g2.setColor(new Color(255, 100, 100)); 
 					}
 				}
 
-				// Draw max mismatch with thick red line
+				
 				if (maxMismatchPoint != null && maxMismatchOriginal != null) {
 					g2.setColor(Color.RED);
 					g2.setStroke(new BasicStroke(3));
@@ -513,7 +513,7 @@ public class GUI<T> extends JFrame {
 							(int) maxMismatchPoint.getX(), (int) maxMismatchPoint.getY());
 					g2.drawOval((int) maxMismatchPoint.getX() - RADIUS, (int) maxMismatchPoint.getY() - RADIUS,
 							RADIUS * 2, RADIUS * 2);
-					g2.setStroke(new BasicStroke(1)); // reset stroke
+					g2.setStroke(new BasicStroke(1)); 
 				}
 			}
 		}
